@@ -70,6 +70,7 @@ end
 
 
 gem 'grape'
+gem 'grape-swagger'
 gem 'grape-swagger-rails'
 gem 'bcrypt'
 gem 'jwt'
