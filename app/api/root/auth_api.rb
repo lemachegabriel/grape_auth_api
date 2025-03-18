@@ -16,7 +16,7 @@ module Root
         user = User.find_by(email: params[:email])
 
         if user && user.authenticate(params[:password])
-          token = JWT.encode({ user_id: user.id }, 'your_secret_key', 'HS256')
+          token = JWT.encode({ user_id: user.id }, Rails.application.credentials[:secret_key_base], 'HS256')
           { token: token }
         else
           error!({ error: "Invalid email or password" }, 401)
