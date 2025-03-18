@@ -1,24 +1,74 @@
-# README
+# User Authentication API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails API-only application for user authentication and management built with Grape and documented with Swagger.
 
-Things you may want to cover:
+## Overview
 
-* Ruby version
+This project provides a RESTful API for user registration, authentication, and management. It uses JWT (JSON Web Token) for authentication and Grape for API development with Swagger documentation.
 
-* System dependencies
+## Features
 
-* Configuration
+- User registration
+- User authentication (login with JWT)
+- Get user details
+- Update user information
+- API documentation with Swagger
 
-* Database creation
+## Technology Stack
 
-* Database initialization
+- Ruby on Rails
+- Grape API framework
+- grape-swagger for API documentation
+- JWT for authentication
 
-* How to run the test suite
+## API Endpoints
 
-* Services (job queues, cache servers, search engines, etc.)
+### Authentication
 
-* Deployment instructions
+- `POST /api/auth/login` - Login and get a JWT token
 
-* ...
+### User Management
+
+- `POST /api/user/register` - Register a new user
+- `GET /api/user/:id` - Get user details
+- `PUT /api/user/:id` - Update user information
+
+## Setup
+
+1. Clone the repository
+```bash
+git clone git@github.com:lemachegabriel/grape_auth_api.git
+cd grape_auth_api
+```
+
+2. Install dependencies
+```bash
+bundle install
+```
+
+3. Setup the database
+```bash
+rails db:create db:migrate
+```
+
+4. Start the server
+```bash
+rails server
+```
+
+## API Documentation
+
+The API documentation is available through Swagger:
+
+- JSON format: `http://localhost:3000/api/swagger_doc`
+- If you're not using API-only mode or have configured Swagger UI: `http://localhost:3000/swagger`
+
+## Authentication
+
+The API uses JWT for authentication:
+
+1. Register a user or login to get a token
+2. Include the token in the Authorization header for protected routes:
+```
+Authorization: Bearer [your-token]
+```
